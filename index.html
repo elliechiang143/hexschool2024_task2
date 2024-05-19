@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>2024六角體驗營 - 切版任務作業二</title>
+    <link rel="icon" href="https://rpg.hexschool.com/favicon/favicon.ico" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Round">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -11,21 +12,64 @@
 <body>
     <nav>
         <div class="container">
+            <div class="ham">
+                <i class="material-icons-round">menu</i>
+            </div>
             <a href="index.html" class="logo">
                 <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/a0deba953fc5322a513e717e7c24b25fa3d946f8/2024%20web-camp/logo.svg" alt="Noel">
             </a>
             <ul>
-                <li>首頁</li>
-                <li>作品集</li>
-                <li>服務項目</li>
-                <li>部落格</li>
-                <li>聯絡我</li>
+                <li>
+                    <a href="index.html" class="active">
+                        <span></span>
+                        <span></span>
+                        首頁
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="portfolio.html">
+                        <span></span>
+                        <span></span>
+                        作品集
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="services.html">
+                        <span></span>
+                        <span></span>
+                        服務項目
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="article.html">
+                        <span></span>
+                        <span></span>
+                        部落格
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span></span>
+                        <span></span>
+                        聯絡我
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
     <header>
         <div class="about">
-            <h1>Hi！我是 Noel</h1>
+            <h2>Hi！我是 Noel</h2>
             <p class="fs-5">具有 10 年經驗的<span>資深 UI 設計師</span>兼<span>前端工程師</span><br>技術雙修並行，熱衷於優化使用者的網頁體驗</p>
             <p class="fs-6">WEB DEVELOPMENT / BRANDING / UI / UX / APP DESIGN</p>
             <div class="social">
@@ -61,6 +105,7 @@
         </div>
         <div class="work work-2">
             <div class="container">
+                <div class="work-cover"></div>
                 <div class="info">
                     <div class="top">
                         <h3>理財APP</h3>
@@ -116,7 +161,7 @@
                     <h3>前端開發</h3>
                 </li>
             </ul>
-            <p class="fs-3">想要合作或瞭解更多？</p>
+            <h3>想要合作或瞭解更多？</h3>
             <a href="#" class="btn-1">詳細內容與合作流程<i class="material-icons-round">arrow_forward</i></a>
         </div>
     </section>
@@ -200,6 +245,9 @@
                 </div>
             </div>
             <div class="swiper-pagination article-pagination"></div>
+            <div class="more">
+                <a href="article.html" class="btn-1">更多文章<i class="material-icons-round">arrow_forward</i></a>
+            </div>
         </div>
     </section>
     <footer>
@@ -241,18 +289,50 @@
             </div>
         </div>
     </footer>
+    <div class="overlay"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/all.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 3,
-            spaceBetween: 24,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+        let swiper;
+        // 追蹤Swiper是否已經初始化
+        let isSwiperInitialized = false;
+        // 初始化Swiper
+        function initializeSwiper(){
+            swiper = new Swiper('.swiper', {
+                slidesPerView: 3,
+                spaceBetween: 24,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                }
+            });
+            isSwiperInitialized = true;
+        }
+        // 銷毀Swiper
+        function destroySwiper(){
+            if(swiper){
+                swiper.destroy(true, true);
+                swiper = null;
+                isSwiperInitialized = false;
             }
-        });
+            
+        }
+        function checkWindowSize(){
+            if(window.innerWidth <= 1024){
+                if(isSwiperInitialized){
+                    destroySwiper();
+                }
+            }else{
+                if(!isSwiperInitialized){
+                    initializeSwiper();
+                }
+            }
+        }
+        checkWindowSize();
+        window.addEventListener('resize', checkWindowSize);
     </script>
 </body>
 
