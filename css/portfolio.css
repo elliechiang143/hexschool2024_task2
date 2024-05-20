@@ -31,6 +31,9 @@
   background-position: left top, right bottom;
   max-width: 670px;
 }
+.header-quote .quote br {
+  display: none;
+}
 .header-quote .quote h4 {
   font-weight: 400;
 }
@@ -149,16 +152,37 @@
   color: #fff;
 }
 
+@media screen and (max-width: 1024px) {
+  .header-quote {
+    margin-top: 56px;
+  }
+}
 @media screen and (max-width: 768px) {
+  .header-quote {
+    padding-top: 40px;
+  }
   .header-quote .quote {
     background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/quote-left.png?raw=true);
     background-position: center top;
+    width: 100%;
+    padding: 64px 12px 0;
+    margin-bottom: 40px;
+    gap: 8px;
+  }
+  .header-quote .quote br {
+    display: block;
+  }
+  .header-quote .quote h4 {
+    line-height: 1.5;
+    font-size: 20px;
   }
   .header-quote .experience {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    gap: 20px;
+    max-width: 235px;
   }
   .portfolio-works .work-list {
     -webkit-box-orient: vertical;
@@ -166,6 +190,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 48px;
+    margin-bottom: 48px;
   }
   .portfolio-works .work-list li {
     width: 100%;

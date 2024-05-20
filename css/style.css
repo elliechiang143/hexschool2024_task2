@@ -919,6 +919,8 @@ footer .right a:hover path {
     font-weight: 700;
   }
   footer .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -934,6 +936,13 @@ footer .right a:hover path {
   }
   footer .container .left .fs-5 {
     font-size: 16px;
+  }
+  footer .container .right {
+    width: 200%;
+    max-width: 306px;
+  }
+  footer .container .right a {
+    padding: 4px 24px;
   }
 }
 @media screen and (max-width: 375px) {
