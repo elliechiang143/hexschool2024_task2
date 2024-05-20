@@ -4,7 +4,7 @@ function navigationOpenToggle(){
     let icon = $('.ham i');
     navBtn.click(function(){
         $('nav ul').toggleClass('active');
-        $('.overlay').fadeToggle(500);
+        $('.overlay').fadeToggle(300);
         if(icon.text() == 'menu'){
             icon.text('close');
         }else{
